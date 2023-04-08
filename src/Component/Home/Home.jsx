@@ -9,8 +9,15 @@ const Home = () => {
       const[cart, setCart]=useState([]);
 
      const handelAddToCart=(tShirt)=>{
-      const newCart = [...cart,tShirt];
+      const exists = cart.find(ts => ts._id === tShirt._id);
+      if(exists){
+            alert('you have already added this product.')
+      }
+      else{
+            const newCart = [...cart,tShirt];
       setCart(newCart);
+      }
+      
      }
      const handelRemoveCart=(id)=>{
     const remainingTs = cart.filter(ts => ts._id !== id);
